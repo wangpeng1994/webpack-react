@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import Home from '../pages/home'
-import Page1 from '../pages/page1'
+import { hot } from 'react-hot-loader'
+import Home from 'pages/home'
+import Page1 from 'pages/page1'
 
 const RouteConfig = () => (
   <Router>
@@ -18,7 +19,7 @@ const RouteConfig = () => (
   </Router>
 )
 
-export default RouteConfig
+export default hot(module)(RouteConfig)
 
 /**
  * 试验：

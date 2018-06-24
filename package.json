@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-build": "webpack --config webpack.dev.config.js"
+    "dev-build": "webpack --config webpack.dev.config.js",
+    "dev-server": "webpack-dev-server --config  webpack.dev.config.js --color --progress --hot"
   },
   "author": "xiaofeng",
   "license": "ISC",
@@ -15,7 +16,10 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "webpack": "^3.5.5"
+    "react-hot-loader": "^4.3.3",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
     "react": "^16.4.1",

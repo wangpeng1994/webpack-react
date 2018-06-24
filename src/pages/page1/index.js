@@ -5,7 +5,7 @@ export default class Page1 extends React.Component {
   render() {
     return (
       <div>
-        This is page ~
+        This is page 啊~
       </div>
     )
   }
