@@ -30,9 +30,9 @@ module.exports = {
     alias: {
       pages: path.resolve(__dirname, 'src/pages'),
       component: path.resolve(__dirname, 'src/component'),
-      router: path.join(__dirname, 'src/router')
+      router: path.resolve(__dirname, 'src/router'),
+      actions: path.resolve(__dirname, 'src/redux/actions'),
+      reducers: path.resolve(__dirname, 'src/redux/reducers')
     }
   }
 }
-
-console.log()

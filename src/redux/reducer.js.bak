@@ -1,0 +1,16 @@
+import counter from 'reducers/counter'
+import userInfo from 'reducers/userInfo'
+
+/**
+ * 先尝试自己实现 combineReducers 函数，用于联合多个子reducer
+ */
+export default (state = {}, action) => ({
+  counter: counter(state.counter, action),
+  userInfo: userInfo(state.userInfo, action)
+})
+
+/**
+ * combinReducers 思路：
+ * 1. 首先本模块输出的是个联合后的 reducer 函数，reducer 函数接受 state 和 action 两个参数
+ * 2. reducer 函数本身是输出计算后的新的 state 对象
+ */

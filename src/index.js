@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 import RouteConfig from 'router'
 
 // 使用了 react-hot-loader 的 hot 函数后，不需要再手动 patch
@@ -8,6 +10,9 @@ import RouteConfig from 'router'
 // }
 
 ReactDom.render(
-  <RouteConfig />, // 目前是直接引了路由组件放在这，而后面这里是 App 这样的组件，然后 App 才是真的入口index.js 文件  
+  // 目前是直接引了路由组件放在这，而后面这里是 App 这样的组件，然后 App 才是真的入口index.js 文件
+  <Provider store={store}>
+    <RouteConfig />
+  </Provider>,
   document.getElementById('root')
 )
