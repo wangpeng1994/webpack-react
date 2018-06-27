@@ -3,6 +3,7 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
+  devtool: 'inline-source-map',
   entry: path.resolve(__dirname, 'src/index.js'),
    // __dirname 当前模块所在文件夹名称的绝对路径(快捷变量) http://nodejs.cn/api/modules.html
   output: {
@@ -21,6 +22,13 @@ module.exports = {
       test: /\.js$/,
       use: ['babel-loader?cacheDirectory=true'],
       include: path.resolve(__dirname, 'src')
+    }, {
+      test: /\.scss$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+      ]
     }]
   },
   // plugins: [ // 使用命令行 --hot 的方式更简洁
