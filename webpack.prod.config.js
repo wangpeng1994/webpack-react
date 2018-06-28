@@ -4,24 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  devtool: 'inline-source-map',
-  // entry: path.resolve(__dirname, 'src/index.js'),
+  devtool: 'cheap-module-source-map',
   entry: {
     vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux'],
     app: path.resolve(__dirname, 'src/index.js')
   },
-   // __dirname 当前模块所在文件夹名称的绝对路径(快捷变量) http://nodejs.cn/api/modules.html
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].js', // 每次都要手动修改HTML中入口js名字，so: HtmlWebpackPlugin
+    filename: '[name].[chunkhash].js', // 每次都要手动修改HTML中入口js名字，so: HtmlWebpackPlugin
     chunkFilename: '[name].[chunkhash].js'
-  },
-  devServer: {
-    port: 8088,
-    contentBase: './dist',
-    historyApiFallback: true,
-    host: '0.0.0.0',
-    hot: true
   },
   optimization: {
     splitChunks: {
@@ -31,7 +22,7 @@ module.exports = {
   module: {
     rules: [{
       test: /\.js$/,
-      use: ['babel-loader?cacheDirectory=true'],
+      use: ['babel-loader'],
       include: path.resolve(__dirname, 'src')
     }, {
       test: /\.scss$/,
@@ -51,14 +42,13 @@ module.exports = {
     }]
   },
   plugins: [ 
-    // new webpack.HotModuleReplacementPlugin() // 使用命令行 --hot 的方式更简洁
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/index.html')
     }),
-    // new webpack.DefinePlugin({
-    //   'process.env.NODE_ENV': JSON.stringify('production')
-    // })
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
   ],
   resolve: {
     alias: {

@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
+// 尝试检查全局node变量
+if (process.env.NODE_ENV === 'production') console.log('Looks like we are in production mode!')
+
 export default class Home extends React.Component {
   constructor() {
     super(...arguments)

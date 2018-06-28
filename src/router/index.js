@@ -1,10 +1,29 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import Loadable from 'react-loadable' // 如果用了babel，babel中也要配置插件
 import { hot } from 'react-hot-loader'
 import Home from 'pages/home'
-import Page1 from 'pages/page1'
-import Counter from 'pages/counter'
-import UserInfo from 'pages/userInfo'
+// import Page1 from 'pages/page1'
+// import Counter from 'pages/counter'
+// import UserInfo from 'pages/userInfo'
+
+const Loading = () => <div>Loading...</div>
+
+const Page1 = Loadable({
+  loader: () => import(/* webpackChunkName: "page1" */ 'pages/page1'),
+  loading: Loading
+})
+
+const Counter = Loadable({
+  loader: () => import(/* webpackChunkName: "counter" */ 'pages/counter'),
+  loading: Loading
+})
+
+const UserInfo = Loadable({
+  loader: () => import(/* webpackChunkName: "userInfo" */ 'pages/userInfo'),
+  loading: Loading
+})
+
 
 const RouteConfig = () => (
   <Router>

@@ -5,9 +5,7 @@ import * as counterAction from 'actions/counter'
  * 或者在创建 store 时在 createStore 函数中传入第二个参数 initState
  */
 const initState = {
-  counter: {
-    count: 0
-  }
+  count: 0
 }
 
 /**
