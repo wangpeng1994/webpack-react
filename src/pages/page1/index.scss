@@ -1,5 +1,15 @@
 .page-wrap {
-  color: lightblue;
-  border: 1px dashed;
-  background-color: lightcoral;
+  .box1 {
+    height: 100px;
+    width: 100px;
+    color: lightblue;
+    border: 1px dashed;
+    background-color: #f08080;
+    background: url(./alipay.png) no-repeat center;
+  }
+  .box2 {
+    height: 100px;
+    width: 100px;
+    background: url(./light.jpg) no-repeat center;
+  }
 }

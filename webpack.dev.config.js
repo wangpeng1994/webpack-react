@@ -29,6 +29,14 @@ module.exports = {
         'css-loader',
         'sass-loader'
       ]
+    }, { // url-loader 内部封装了 file-loader
+      test: /\.(png|jpe?g|gif|svg)$/,
+      use: [{
+        loader:  'url-loader',
+        options: {
+          limit: 8192 // 小于8k会转为base64URL，直接插入HTML中，大于8k则使用file-loader复制并处理路径,但还是要安装 file-loader
+        }
+      }]
     }]
   },
   // plugins: [ // 使用命令行 --hot 的方式更简洁
