@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import Loadable from 'react-loadable' // 如果用了babel，babel中也要配置插件
+import Loadable from 'react-loadable' // 如果用了babel，babel中也要配置插件， 利用 ES7 dynamicimport 新特性
 import { hot } from 'react-hot-loader'
 import Home from 'pages/home'
 // import Page1 from 'pages/page1'
@@ -10,7 +10,7 @@ import Home from 'pages/home'
 const Loading = () => <div>Loading...</div>
 
 const Page1 = Loadable({
-  loader: () => import(/* webpackChunkName: "page1" */ 'pages/page1'),
+  loader: () => import(/* webpackChunkName: "page1" */ 'pages/page1'), // 如果不指定webpackChunkName，则会自动分配数字id 0 1 2 3
   loading: Loading
 })
 

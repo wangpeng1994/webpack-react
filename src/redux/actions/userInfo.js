@@ -28,7 +28,7 @@ const getUserInfoFail = () => ({
  * 异步 action
  * 直接返回的不是 action 对象，而是函数
  * reducer 只能处理 对象形式的 action，所以函数形式的 action 会交给中间件来处理
- * redux-thunk 的作用：函数形式的 action，把他们转为标准的 action 给 reducer
+ * redux-thunk 中间件的作用：将函数形式的 action 进过异步处理后，再次包装成 dispatch(action) 的形式传递给 reducer
  */
 export const getUserInfo = () => {
   return dispatch => {

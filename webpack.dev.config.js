@@ -13,7 +13,7 @@ module.exports = {
    // __dirname 当前模块所在文件夹名称的绝对路径(快捷变量) http://nodejs.cn/api/modules.html
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].js', // 每次都要手动修改HTML中入口js名字，so: HtmlWebpackPlugin
+    filename: '[name].[hash].js', // 每次都要手动修改HTML中入口js名字，so: HtmlWebpackPlugin  chunkhash 在这里会和 devServer 冲突，生产环境可以使用，chunkhash 代表了长期缓存配置
     chunkFilename: '[name].[chunkhash].js'
   },
   devServer: {
@@ -23,9 +23,10 @@ module.exports = {
     host: '0.0.0.0',
     hot: true
   },
-  optimization: {
+  // goodbye CommonsChunkPlugin ↓↓↓
+  optimization: {   // 1. 自动根据是否来自node_modules, 大于30kb，import调用共享 等条件进行拆分块
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all' // "initial"、"async"和"all"。分别用于选择初始块、按需加载的块和所有块
     }
   },
   module: {
